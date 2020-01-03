@@ -8,6 +8,14 @@ html {
     box-sizing: inherit;
 }
 
+.minutes, .seconds{
+  border: none;
+  font-size: 16px;
+  font-weight: bold;
+  color: black;
+  width: 20px;
+
+}
 html,
 body {
     width: 100%;
@@ -63,6 +71,7 @@ h1 {
     justify-content: center;
     align-items: center;
     box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+
 }
 
 .deck .card.open {
