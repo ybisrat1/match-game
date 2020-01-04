@@ -173,8 +173,12 @@ function clicktarget(evt){
     };
 
 // checks to see if all the cards have been matched
+
+
     function setmatchscreen(){
           cardcount= 0; //var to hold all the match cards
+          var modal = document.getElementById('modal');
+          var span = document.getElementsByClassName("close")[0];
           for(i=0; i<cardarray.length;i++){ //loops through all cards
             if (cardarray[i].outerHTML.includes('card match')){
              cardcount++ //if there is cards has match class increment cardcount
@@ -182,13 +186,22 @@ function clicktarget(evt){
            else{
            }
          }
-          if (cardcount >=16){ //if all 16 cards are matched
-               const myfragment = document.createDocumentFragment();
-               const newElement= document.createElement('div')
-               newElement.innerText='Congradulations!!! your score is '+stararray.childElementCount+ ' stars which was done in '+counterint +' moves !!!'
-               myfragment.appendChild(newElement);
-               newElement.setAttribute('id', 'congratsmsg');
-               document.body.appendChild(myfragment);
+          if (cardcount >=1){ //if all 16 cards are matched
+              // const myfragment = document.createDocumentFragment();
+
+              modal.style.cssText= 'display: block';// makes modal visable
+               const newElement= document.createElement('p')// create p element to be attached ot modal with message
+               newElement.innerText='Congradulations!!! your score is '+stararray.childElementCount+ ' stars which was done in '+counterint +' moves in ' +mins+' minutes and '+secs+ ' seconds!!!'
+            // myfragment.appendChild(newElement);
+               newElement.setAttribute('id', 'congratsmsg');// used to set set match condition
+               newElement.style.display='block';
+
+               //newElement.style.cssText='position: fixed; z-index: 1; width: 100%; height: 100%; background-color: blue; padding-top: 100px; display: none';
+              // myfragment.style.display='block';
+
+              document.getElementById('modal').appendChild(restart);// adds restart buttton to modal
+              document.getElementById('modal').appendChild(newElement);// add p element to modal
+
                //create new element and append it to the body with message and score
             }
             else{
