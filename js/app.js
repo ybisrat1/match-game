@@ -1,8 +1,8 @@
 /*
  * Create a list that holds all of your cards
  */
-var cardarray = [].slice.call(document.querySelectorAll('.card'));
-var deck = document.querySelector('.deck');
+let cardarray = [].slice.call(document.querySelectorAll('.card'));
+let deck = document.querySelector('.deck');
 
 /*var arrayOfClasses= cardarray.split(' ');
 */
@@ -15,7 +15,7 @@ var deck = document.querySelector('.deck');
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(cardarray) {
-    var currentIndex = cardarray.length, temporaryValue, randomIndex;
+    let currentIndex = cardarray.length, temporaryValue, randomIndex;
 
     while (currentIndex !== 0) {
         randomIndex = Math.floor(Math.random() * currentIndex);
@@ -49,20 +49,20 @@ for (let i= 0; i< cardarray.length; i++){
  */
 
 /* creates a variable to support moves counter*/
- var counter= document.querySelector('.moves');
- var counterint= parseInt(counter.innerHTML,10);
+ let counter= document.querySelector('.moves');
+ let counterint= parseInt(counter.innerHTML,10);
 
 /*use to manipulate the DOM stars*/
-var scores= document.querySelector('.stars');
+let scores= document.querySelector('.stars');
 
 /* adds restart function on homepage*/
-var restart= document.querySelector('.restart');
-var newlink=document.createElement('ahref');
+let restart= document.querySelector('.restart');
+let newlink=document.createElement('ahref');
 newlink.innerHTML= "<a href =./index.html>restart </a>";
 restart.appendChild(newlink);
 
 /*helps manage the star count*/
-var stararray = document.querySelector('.stars');
+let stararray = document.querySelector('.stars');
 
 /*create a empty arrary to support the addcardtoList(evt) */
 cardlist= [];
@@ -82,14 +82,14 @@ moves conunter*/
 function addOnetoCounter(){
   counterint++;
   counter.innerHTML=counterint;
-  var scores= document.querySelector('.stars')
+  let scores= document.querySelector('.stars')
   if (counterint == 18){
 
-    var firstStar = scores.firstElementChild;
+    let firstStar = scores.firstElementChild;
     scores.removeChild(firstStar);
   }
   if (counterint == 28){
-    var firstStar = scores.firstElementChild;
+    let firstStar = scores.firstElementChild;
     scores.removeChild(firstStar);
   }
 };
@@ -119,8 +119,8 @@ function checkmatch(){
 /* timer variables and function. clock starts as soon as the page is loaded
 once the match is done the timer is left on the current time*/
 countup(); // starts the count function when page is loaded
-var mins = 0;
-var secs = 0;
+let mins = 0;
+let secs = 0;
 //count function that is run when page is loaded/
 function countup() {
     setTimeout('Increment()', 60);
@@ -177,8 +177,8 @@ function clicktarget(evt){
 
     function setmatchscreen(){
           cardcount= 0; //var to hold all the match cards
-          var modal = document.getElementById('modal');
-          var span = document.getElementsByClassName("close")[0];
+          let modal = document.getElementById('modal');
+          let span = document.getElementsByClassName("close")[0];
           for(i=0; i<cardarray.length;i++){ //loops through all cards
             if (cardarray[i].outerHTML.includes('card match')){
              cardcount++ //if there is cards has match class increment cardcount
@@ -186,11 +186,11 @@ function clicktarget(evt){
            else{
            }
          }
-          if (cardcount >=1){ //if all 16 cards are matched
+          if (cardcount >=16){ //if all 16 cards are matched
               // const myfragment = document.createDocumentFragment();
 
               modal.style.cssText= 'display: block';// makes modal visable
-               const newElement= document.createElement('p')// create p element to be attached ot modal with message
+               let newElement= document.createElement('p')// create p element to be attached ot modal with message
                newElement.innerText='Congradulations!!! your score is '+stararray.childElementCount+ ' stars which was done in '+counterint +' moves in ' +mins+' minutes and '+secs+ ' seconds!!!'
             // myfragment.appendChild(newElement);
                newElement.setAttribute('id', 'congratsmsg');// used to set set match condition
